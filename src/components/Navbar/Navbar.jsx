@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.css"
 
 
-const Header = () =>{
+const Navbar = () =>{
     return(
       <>
         <header className="main_container">
@@ -20,4 +20,4 @@ const Header = () =>{
     )
 }
 
-export default Header
+export default Navbar
