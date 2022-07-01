@@ -14,11 +14,13 @@ const Searchbar = () => {
 
     const onClick = async (e) => {
         const data = await searchPokemon(search)
+        console.log(data)
         setPokemon(data)
     }
 
     return(
         <section>
+
             <div>
                 <input 
                     placeholder="Buscar pokemon..."
@@ -32,7 +34,9 @@ const Searchbar = () => {
             
             {pokemon &&
             <div>
-                <div>Nombre :{pokemon.weight}</div>               
+                <div>Nombre: {pokemon.name}</div>       
+                <div>Peso: {pokemon.weight} kg</div>        
+                <img src={pokemon.sprites.front_default} alt="" />
             </div>
             }
            </div>
