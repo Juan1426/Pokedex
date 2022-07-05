@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Pokedex from './pages/Pokedex/Pokedex';
@@ -9,12 +10,19 @@ import Searchbar from './components/Searchbar/Searchbar';
 
 import './App.css';
 
+const {useState, useEffect} = 
+
 function App() {
+
+  useEffect(() => {
+    console.log("useEffect funciona")
+  }, [])
+
   return (
     <BrowserRouter>
 
       <Navbar />    
-      <Searchbar />
+      <Searchbar /> 
 
       <Routes>
         <Route element={<Pokedex />} path="/" />

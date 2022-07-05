@@ -1,0 +1,9 @@
+section{
+    padding: 0 15px;
+}
+
+.pokedex_grid{
+    display: gird;
+    grid-auto-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
