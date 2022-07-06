@@ -1,36 +1,41 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Pokedex from './pages/Pokedex/Pokedex';
 import PokedexList from './pages/PokedexList/PokedexList';
-
 import Navbar from './components/Navbar/Navbar'
 import Searchbar from './components/Searchbar/Searchbar';
 
+import { getPokemons } from './api';
+
 import './App.css';
 
-const {useState, useEffect} = 
+export default function App() {
 
-function App() {
+  const[pokemons, setPokemons] = useState([])
+
+  const fetchPokemons = async () => {
+    try{
+      const data = await getPokemons()  
+      setPokemons(data.results) 
+    } catch(err){}
+  }
 
   useEffect(() => {
-    console.log("useEffect funciona")
+    
+    fetchPokemons()
   }, [])
 
   return (
     <BrowserRouter>
-
       <Navbar />    
       <Searchbar /> 
-
       <Routes>
-        <Route element={<Pokedex />} path="/" />
+        <Route element={<Pokedex pokemons={pokemons}/>} path="/" />
         <Route element={<PokedexList />} path="/list" />
       </Routes>
-
     </BrowserRouter>
   );
 }
 
-export default App;
+
