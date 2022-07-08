@@ -6,7 +6,7 @@ import PokedexList from './pages/PokedexList/PokedexList';
 import Navbar from './components/Navbar/Navbar'
 import Searchbar from './components/Searchbar/Searchbar';
 
-import { getPokemons } from './api';
+import { getPokemons, getPokemonData } from './api';
 
 import './App.css';
 
@@ -17,12 +17,15 @@ export default function App() {
   const fetchPokemons = async () => {
     try{
       const data = await getPokemons()  
-      setPokemons(data.results) 
+       
+      const promises = data.results.map( async(pokemon) => {
+        return await getPokemonData(pokemon.url)
+      })
+      const results = await Promise.all()
     } catch(err){}
   }
-
-  useEffect(() => {
-    
+ 
+  useEffect(() => {   
     fetchPokemons()
   }, [])
 

@@ -19,7 +19,7 @@ const Pokedex = (props) =>{
                             )
                         })
                     }
-                </div>
+                </div> 
             </section>
         </section>
     )
