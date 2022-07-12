@@ -16,12 +16,12 @@ export default function App() {
 
   const fetchPokemons = async () => {
     try{
-      const data = await getPokemons()  
-       
+      const data = await getPokemons()    
       const promises = data.results.map( async(pokemon) => {
         return await getPokemonData(pokemon.url)
       })
-      const results = await Promise.all()
+      const results = await Promise.all(promises)
+      setPokemons(results)
     } catch(err){}
   }
  
