@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Pokedex from './pages/Pokedex/Pokedex';
 import PokedexList from './pages/PokedexList/PokedexList';
+import PokemonDetail from './pages/PokemonDetail/PokemonDetail';
+
 import Navbar from './components/Navbar/Navbar'
 import Searchbar from './components/Searchbar/Searchbar';
 
@@ -21,6 +23,7 @@ export default function App() {
       <Routes>       
         <Route element={<Pokedex />} path="/" />
         <Route element={<PokedexList />} path="/list" />
+        <Route element={<PokemonDetail/>} path="/details" />
       </Routes>
     </BrowserRouter>
   );

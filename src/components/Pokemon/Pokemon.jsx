@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import "./Pokemon.css"
 
@@ -32,7 +33,16 @@ const Pokemon = (props) => {
                         })}
                     </div>
                 </div>
-            </div>           
+                <NavLink 
+                    className="navlink_item" 
+                    to="/details" 
+                    pokemon={pokemon} 
+                    key={pokemon.name}
+                >
+                    ver detalles                    
+                </NavLink> 
+            </div>   
+                   
         </div>
     )
 }
