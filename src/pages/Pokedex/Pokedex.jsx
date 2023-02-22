@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { getPokemons, getPokemonData } from '../../api';
 
 import Pokemon from "../../components/Pokemon/Pokemon";
@@ -8,6 +9,9 @@ import Pagination from '../../components/Pagination/Pagination';
 import "./Pokedex.css"
 
 const Pokedex = () =>{
+
+  const parametros = useParams()
+  console.log(parametros)
 
     const [pokemons, setPokemons] = useState([])
     const [page, setPage] = useState(0)
@@ -46,7 +50,6 @@ const Pokedex = () =>{
         <section>
             <h2>Pokedex</h2>
             <section>
-                <h3>Pagintation</h3>
                 <Pagination 
                   page={page + 1}
                   totalPages={total}

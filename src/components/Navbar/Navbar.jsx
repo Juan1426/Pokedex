@@ -13,7 +13,8 @@ const Navbar = () =>{
             </div>
             <nav className="me-auto">
               <NavLink className="navlink_item" to="/">Pokedex</NavLink>
-              <NavLink className="navlink_item" to="/list">List</NavLink>         
+              <NavLink className="navlink_item" to="/list">List</NavLink>       
+              <NavLink className="navlink_item" to="/poke2">Pokedex2</NavLink>  
             </nav>
         </header>
       </>

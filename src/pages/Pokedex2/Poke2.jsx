@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from "react";
+import { useParams } from "react-router-dom";
 import { Form, FormControl } from "react-bootstrap";
 
 
 const Poke2 = () => {
 
+    const parametros = useParams()
+    
     const [pokemon, setPokemon] = useState({})
     const [busqueda, setBusqueda] = useState("")
     const [id, setId] = useState(1)
@@ -19,6 +22,15 @@ const Poke2 = () => {
 
     const handleBuscar = (e) => {
         e.preventDefault()
+        fetch(`https://pokeapi.co/api/v2/pokemon/${busqueda}`)
+            .then(resp => resp.json())
+            .then( data => {
+                setPokemon({
+                    nombre : data.name,
+                    imagen : data.sprites.front_default,
+                    peso : data.weight
+                })
+            })
         console.log(busqueda)
     }
 
