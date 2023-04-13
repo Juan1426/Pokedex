@@ -1,0 +1,23 @@
+
+
+.pokemon-card{
+    height: 200px;
+    width: 300px;
+    margin: 15px auto ;
+    background-color:rgba(0,0,0, 0.25);
+    display: flex;
+    box-shadow: 4px 4px 4px rgba(0,0,0, 0.25);
+    border-radius: 3px;   
+    
+    .pokemon-type{
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+
+
+        @if h4 == grass{
+            color: green;
+        }
+    }
+}
+

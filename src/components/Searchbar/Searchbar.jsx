@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { searchPokemon } from "../../api";
+import "./Searchbar.scss"
 
 const Searchbar = () => {
 
@@ -19,10 +20,10 @@ const Searchbar = () => {
     }
 
     return(
-        <section>
-
+        <section className="searchbar">
             <div>
                 <input 
+                    className="searcher"
                     placeholder="Buscar pokemon..."
                     onChange={onChange}
                 />
