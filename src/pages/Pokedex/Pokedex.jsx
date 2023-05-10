@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getPokemons, getPokemonData } from '../../api';
 
-import Pokemon from "../../components/Pokemon/Pokemon";
+import PokemonCard from "../../components/PokemonCard/PokemonCard";
 import Loading from '../../components/Loading/Loading';
 import Pagination from '../../components/Pagination/Pagination';
 
-import "./Pokedex.css"
 
 const Pokedex = () =>{
 
@@ -47,29 +46,28 @@ const Pokedex = () =>{
     }
     
     return(
-        <section>
-            <h2>Pokedex</h2>
-            <section>
-                <Pagination 
-                  page={page + 1}
-                  totalPages={total}
-                  onLeftClick = {lastPage}
-                  onRightClick = {nextPage}
-                />
-                { loading 
-                  ? <Loading />
-                  : <div className="pokedex-grid">
-                    {
-                        pokemons.map((pokemon, idx) =>{
-                            return (
-                                <Pokemon pokemon={pokemon} key={pokemon.name} />                        
-                            )
-                        })
-                    }             
-                </div> 
-                }
-            </section>
-        </section>
+      <main>
+          <Pagination 
+            page={page + 1}
+            totalPages={total}
+            onLeftClick = {lastPage}
+            onRightClick = {nextPage}
+          />
+          { loading 
+            ? <Loading />
+            : <div className="pokedex-grid">
+              
+              {
+                  pokemons.map((pokemon, idx) =>{
+                      return (
+                          <PokemonCard pokemon={pokemon} key={pokemon.name} />                        
+                      )
+                  })
+              }             
+          </div> 
+          }
+      </main>
+
     )
 }
 

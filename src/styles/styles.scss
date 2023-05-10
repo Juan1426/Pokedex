@@ -1,0 +1,14 @@
+//UI Settings
+
+@import "./base/settings";
+
+//Components
+@import "./components/PokemonCard";
+@import "./components/Pagination";
+@import "./components/Navbar";
+@import "./components/Loading";
+@import "./components/Searchbar";
+
+//Pages
+@import "./pages/Pokedex";
+@import "./pages/PokemonDetail";

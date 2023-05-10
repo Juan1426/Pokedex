@@ -1,8 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import "./PokemonDetail.css"
-
 const PokemonDetail = (props) => {
     
     console.log(props)

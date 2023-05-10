@@ -1,5 +1,4 @@
 import React from "react";
-import "./Pagination.scss"
 
 const Pagination = (props) => {
 const {onLeftClick, onRightClick, page, totalPages} = props

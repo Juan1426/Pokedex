@@ -1,0 +1,11 @@
+main{
+  width: 100%;
+  background-color: white;
+}
+
+.pokedex-grid{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto 80px ;
+}

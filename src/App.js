@@ -7,7 +7,8 @@ import PokedexList from './pages/PokedexList/PokedexList';
 import PokemonDetail from './pages/PokemonDetail/PokemonDetail';
 
 import Navbar from './components/Navbar/Navbar'
-import Searchbar from './components/Searchbar/Searchbar';
+
+import "./styles/styles.scss"
 
 export default function App() {
   
@@ -24,8 +25,7 @@ export default function App() {
         updateFavoritePokemons: updateFavoritePokemons
       }}>
       <BrowserRouter>
-        <Navbar />    
-        <Searchbar /> 
+        <Navbar />     
         <Routes>       
           <Route element={<Pokedex />} path="/" />
           <Route element={<Pokedex />} path="/category/:catId" />
