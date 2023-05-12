@@ -37,16 +37,7 @@ header{
         }
 
         .btn-search{
-            border: none;
-            outline: none;
-            border-radius: 25px;
-            font-family: inherit;
-            padding: 10px 20px;
-            cursor: pointer;
-            letter-spacing: 2px;
-            font-weight: bold;
-            background-color: $color-3;
-            color: #fff;
+            @include button-1()
         }
     }
 }

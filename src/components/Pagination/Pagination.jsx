@@ -7,10 +7,10 @@ const {onLeftClick, onRightClick, page, totalPages} = props
         <section>
             <div>
                 <button onClick={onLeftClick}>
-                    <h3>volver</h3>
+                    volver
                 </button>
                 <button onClick={onRightClick}>
-                    <h3>siguiente</h3>
+                    siguiente
                 </button>
                 <div>pagina {page} de {totalPages}</div>               
             </div>

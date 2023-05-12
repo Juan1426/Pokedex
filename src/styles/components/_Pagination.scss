@@ -1,5 +1,5 @@
 section{
-    button{
-        margin: 3px;
+    button{        
+        @include button-1()
     }
 }

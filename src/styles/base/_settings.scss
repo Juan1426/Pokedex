@@ -6,7 +6,21 @@
 	$color-5: #f9f6f9;
 
 //Buttons
+@mixin button-1(){
+	border: none;
+	outline: none;
+	border-radius: 25px;
 
+	font-family: inherit;
+	padding: 10px 20px;
+	margin-bottom: 5px;
+	
+	letter-spacing: 2px;
+	font-weight: bold;
+	cursor: pointer;
+	background-color: $color-3;
+	color: #fff;
+}
 	
 
 // Class-color Pokemon

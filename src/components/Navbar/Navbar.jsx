@@ -47,7 +47,7 @@ const Navbar = () =>{
                       onChange={onChange}
                   />
               </div>
-              <button onClick={onClick} className="btn-search">Buscar</button>        
+                  <button onClick={onClick} className="btn-search">Buscar</button>        
              {/*<div>            
                   {pokemon &&
                     <div>
