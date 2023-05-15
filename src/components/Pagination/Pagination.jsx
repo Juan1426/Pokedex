@@ -7,7 +7,7 @@ const {onLeftClick, onRightClick, page, totalPages} = props
         <section>
             <div>
                 <button onClick={onLeftClick}>
-                    volver
+                    volver                    
                 </button>
                 <button onClick={onRightClick}>
                     siguiente
