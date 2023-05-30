@@ -1,39 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getPokemons, getPokemonData } from '../../api';
+import { getPokemons, getPokemonData, searchPokemon } from '../../api';
 
 import PokemonCard from "../../components/PokemonCard/PokemonCard";
 import Loading from '../../components/Loading/Loading';
 import Pagination from '../../components/Pagination/Pagination';
 
 
-const Pokedex = () =>{
-
-  const parametros = useParams()
-  console.log(parametros)
-
-  //States
+const Pokedex = () =>{  
+  //#STATES
   const [pokemons, setPokemons] = useState([])
   const [page, setPage] = useState(0)
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(true)
-
-  //Searcher
   const [search, setSearch] = useState([])
-    const [pokemon, setPokemon] = useState()
+  const [pokemon, setPokemon] = useState()
     
-    const onChange = (e) => {
-        console.log(e.target.value)
-        setSearch(e.target.value)  
-    }
+  //#SEARCHER
+  //capturo la busqueda
+  const onChange = (e) => {
+      setSearch(e.target.value)  
+      console.log(e.target.value)
+  }
+  //metodo de filtrado
 
-    const onClick = async (e) => {
-        const data = await searchPokemon(search)
-        console.log(data)
-        setPokemon(data)
-    }
 
-  //
+  //#OFFSET
   const fetchPokemons = async () => {
     try{
       setLoading(true)
@@ -48,8 +40,7 @@ const Pokedex = () =>{
     } catch(err){}
   }
 
-
-  //Pagination
+  //#PAGINATION
   useEffect(() => {   
     fetchPokemons()
   }, [page])
@@ -78,20 +69,22 @@ const Pokedex = () =>{
             className="icon-search"
           >
             <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
             />
           </svg>
-            <input 
-                className="searcher"
-                placeholder="Buscar pokemon..."
-                onChange={onChange}
-            />
+           <input 
+          type='text'
+          className="searcher"
+          value={search}
+          placeholder="Buscar pokemon..."
+          onChange={onChange}
+        />
         </div>
-            {/*<button onClick={onClick} className="btn-search">Buscar</button>*/}                      
+            {/*<button onClick={onClick} className="btn-search">Buscar</button>*/}                     
       </form>
-
+        
         <Pagination 
           page={page + 1}
           totalPages={total}

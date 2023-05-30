@@ -6,16 +6,12 @@
     margin: 10px auto;
     padding: 10px;
     border-radius: 3px;  
-    background-color: white;
-    
-
-   
+    background-color: white;   
     .pokemon-img{
         display: flex;
         align-items: center;
         justify-content: center;
         margin: auto;
-
         height: 200px;
         width: 200px;  
     }
@@ -23,21 +19,21 @@
     .card-body{
         .card-top{
             h2{
-                color: white;
+                color: $color-2;
             }
         }
-
         .card-bottom{
 
             .pokemon-type{
                 display: flex;
                 justify-content: space-around;
                 align-items: flex-start;
-
                 span{
                     padding: 6px 10px;
                     border-radius: 5px;
                     line-height: 100%;
+                    color: rgb(255, 255, 255);
+                    font-weight: bolder;
                 }
             } 
         }      
@@ -46,6 +42,6 @@
 }
 
 .pokemon-card:hover{
-    background-color: $color-5;
+    background-color: $color-hover-1;
 }
 
