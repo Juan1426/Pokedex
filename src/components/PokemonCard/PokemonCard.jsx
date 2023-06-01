@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 
  const PokemonCard = (props) => {
@@ -18,7 +18,7 @@ import { NavLink } from "react-router-dom";
                 </div>
                 <div className="card-bottom">
                     <div className="pokemon-type">
-                        {pokemon.types.map(type =>(
+                        {pokemon.types.map( (type) =>(
                             <span key={type.type.name} className={type.type.name}>
                                 {type.type.name}
                             </span>

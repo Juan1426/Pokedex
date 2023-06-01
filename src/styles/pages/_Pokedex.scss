@@ -1,43 +1,43 @@
 main{
-  width: 100%;
-  background-color: white;
-  form{
-    display: flex;
-    align-items: center;
-    gap: 15px;
-
-    .form-group{
+    width: 100%;
+    background-color: white;
+    .coso{
         display: flex;
-        align-items: center;
-        gap: 10px;
-        border: 1px solid #555;
-        padding: 15px 20px;
-        border-radius: 25px;
-
-        .icon-search{
-            width: 20px;
-            height: 20px;
-            stroke: #555;
-        }
-
-        input{
-            font-family: inherit;
-            width: 300px;
-            border: none;
-            outline: none;
-            font-size: 15px;
+        justify-content: space-around;
+        form{
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            .form-group{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                border: 1px solid #555;
+                padding: 15px 20px;
+                border-radius: 25px;
+                .icon-search{
+                    width: 20px;
+                    height: 20px;
+                    stroke: #555;
+                }
+                input{
+                    font-family: inherit;
+                    width: 300px;
+                    border: none;
+                    outline: none;
+                    font-size: 15px;
+                }
+            }
+            .btn-search{
+                @include button-1()
+            }
         }
     }
-
-    .btn-search{
-        @include button-1()
+    .pokedex-grid{
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: auto 80px ;
     }
 }
-}
 
-.pokedex-grid{
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: auto 80px ;
-}
