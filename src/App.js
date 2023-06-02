@@ -19,11 +19,7 @@ export default function App() {
   };
 
   return (
-    <FavouriteProvider 
-      value={{
-        favouritePokens: favourites, 
-        updateFavoritePokemons: updateFavoritePokemons
-      }}>
+    <FavouriteProvider>
       <BrowserRouter>
         <Navbar />     
         <Routes>       
