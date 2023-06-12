@@ -1,11 +1,11 @@
 import { PokemonContext } from "./PokemonContext"
 import { getPokemons, getAllPokemons, getPokemonData, getPokemonByName } from "../api"
-import { useState, useContext, useEffect } from "react"
+import { React , useState, useEffect } from "react"
 
 export const PokemonProvider = ({children}) => {
   const [pokemons, setPokemons] = useState([])
   const [allPokemons, setAllPokemons] = useState([])
-  const [pokemon, setPokemon] = useState([])
+  //const [pokemon, setPokemon] = useState([])
   const [page, setPage] = useState(0)
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(false)
@@ -24,6 +24,7 @@ export const PokemonProvider = ({children}) => {
       setTotal(Math.ceil(data.count/20))
     }catch(err){}
   }   
+  
 //Funcion para llamar todos los pokemons
   const fetchAllPokemons = async() => {
     try{
@@ -42,21 +43,37 @@ export const PokemonProvider = ({children}) => {
     try{    
       setLoading(true)
       const data = await getPokemonByName()
-
     }catch(err){}
   }
-  //
-  useEffect(()=> {
+
+  //#PAGINATION
+  useEffect(() => {   
     fetchPokemons()
-  }, [])
+  }, [page])
+  const lastPage =()=> {
+    const nextPage = Math.max(page - 1, 0)
+    setPage(nextPage)
+  }
+  const nextPage =()=> {
+    const nextPage = Math.min(page + 1, total)
+    setPage(nextPage)
+  }
 
-  useEffect(() =>{
-    fetchAllPokemons()
-  },[])
-
-    return(
-        <PokemonContext.Provider value={{number:1}}>
-            {children}
-        </PokemonContext.Provider>
-    )
+  return(
+    <PokemonContext.Provider value={{
+      fetchAllPokemons,
+      fetchPokemons,
+      fetchPokemonId,
+      lastPage,
+      nextPage,
+      pokemons, 
+      allPokemons, 
+      //pokemon, 
+      page, 
+      total, 
+      loading 
+    }}>
+      {children}
+    </PokemonContext.Provider>
+  )
 }
