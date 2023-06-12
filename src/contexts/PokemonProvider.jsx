@@ -1,14 +1,14 @@
 import { PokemonContext } from "./PokemonContext"
-import { getPokemons, getAllPokemons, getPokemonData, searchPokemon } from "../api"
+import { getPokemons, getAllPokemons, getPokemonData, getPokemonByName } from "../api"
 import { useState, useContext, useEffect } from "react"
 
-export const PokemonProvider = ({children}) =>{
-
+export const PokemonProvider = ({children}) => {
   const [pokemons, setPokemons] = useState([])
   const [allPokemons, setAllPokemons] = useState([])
+  const [pokemon, setPokemon] = useState([])
   const [page, setPage] = useState(0)
   const [total, setTotal] = useState(0)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   //Funcion para llamar 20 pokemons 
   const fetchPokemons = async () => {
@@ -24,9 +24,8 @@ export const PokemonProvider = ({children}) =>{
       setTotal(Math.ceil(data.count/20))
     }catch(err){}
   }   
-
 //Funcion para llamar todos los pokemons
-  const fetchAllPokemons = async() =>{
+  const fetchAllPokemons = async() => {
     try{
       setLoading(true)
       const data = await getAllPokemons()    
@@ -39,8 +38,14 @@ export const PokemonProvider = ({children}) =>{
     }catch(err){}
   }
 //Funcion para pedir los datos de un solo Pokemon
+  const fetchPokemonId = async() => {
+    try{    
+      setLoading(true)
+      const data = await getPokemonByName()
 
-
+    }catch(err){}
+  }
+  //
   useEffect(()=> {
     fetchPokemons()
   }, [])
@@ -50,7 +55,7 @@ export const PokemonProvider = ({children}) =>{
   },[])
 
     return(
-        <PokemonContext.Provider value={{ }}>
+        <PokemonContext.Provider value={{number:1}}>
             {children}
         </PokemonContext.Provider>
     )

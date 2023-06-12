@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import {React, useState, useEffect, useContext } from 'react';
 import { getPokemonData } from '../../api';
 
 import PokemonCard from "../../components/PokemonCard/PokemonCard";
@@ -7,22 +7,21 @@ import Pagination from '../../components/Pagination/Pagination';
 import { PokemonContext } from '../../contexts/PokemonContext';
 
 const Pokedex = () =>{  
-  //#STATES
-  
-  const context = useContext(PokemonContext)
+
+  const {} = useContext(PokemonContext)
 
     //#PAGINATION
-    useEffect(() => {   
-      fetchPokemons()
-    }, [page])
-    const lastPage =()=> {
-      const nextPage = Math.max(page - 1, 0)
-      setPage(nextPage)
-    }
-    const nextPage =()=> {
-      const nextPage = Math.min(page + 1, total)
-      setPage(nextPage)
-    }
+  useEffect(() => {   
+    fetchPokemons()
+  }, [page])
+  const lastPage =()=> {
+    const nextPage = Math.max(page - 1, 0)
+    setPage(nextPage)
+  }
+  const nextPage =()=> {
+    const nextPage = Math.min(page + 1, total)
+    setPage(nextPage)
+  }
    
   return(
     <main>
