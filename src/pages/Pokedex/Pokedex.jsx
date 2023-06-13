@@ -6,7 +6,7 @@ import { PokemonContext } from '../../contexts/PokemonContext';
 
 const Pokedex = () =>{  
 
-  const {page, total, lastPage, loading, pokemons, nextPage} = useContext(PokemonContext)
+  const {page, total, lastPage, loading, pokemons, nextPage, mensaje} = useContext(PokemonContext)
 
   return(
     <main>
@@ -30,6 +30,7 @@ const Pokedex = () =>{
             }             
           </div> 
           }
+          <h2>{mensaje}</h2>
         </div>
     </main>
   )
