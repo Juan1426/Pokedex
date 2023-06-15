@@ -1,18 +1,11 @@
-import {React, useContext,useState} from "react";
+import {React, useContext} from "react";
 import { NavLink } from "react-router-dom";
 import { PokemonContext } from '../../contexts/PokemonContext';
 
 const Navbar = () =>{
 
-  const {num} = useContext(PokemonContext)
-  console.log(num)
+  const {onChange, search} = useContext(PokemonContext)
 
-  const [search, setSearch] = useState([])
-  
-  const onChange = (e) => {
-    setSearch(e.target.value)  
-    console.log(e.target.value)
-  }
     return(
       <>
         <header className="header_container">

@@ -3,12 +3,19 @@ import { getPokemons, getAllPokemons, getPokemonData, getPokemonByName } from ".
 import { React , useState, useEffect } from "react"
 
 export const PokemonProvider = ({children}) => {
-  const [pokemons, setPokemons] = useState([])
+  //api
   const [allPokemons, setAllPokemons] = useState([])
-  //const [pokemon, setPokemon] = useState([])
+  const [pokemons, setPokemons] = useState([])
+  const [pokemon, setPokemon] = useState([])
+  //paginador
   const [page, setPage] = useState(0)
   const [total, setTotal] = useState(0)
+  //loading
   const [loading, setLoading] = useState(false)
+  //buscador
+  const [search, setSearch] = useState([])
+
+  //---LLAMADOS A LA API---
 
   //Funcion para llamar 20 pokemons 
   const fetchPokemons = async () => {
@@ -25,7 +32,7 @@ export const PokemonProvider = ({children}) => {
     }catch(err){}
   }   
   
-//Funcion para llamar todos los pokemons
+  //Funcion para llamar todos los pokemons
   const fetchAllPokemons = async() => {
     try{
       setLoading(true)
@@ -38,7 +45,7 @@ export const PokemonProvider = ({children}) => {
       setLoading(false)
     }catch(err){}
   }
-//Funcion para pedir los datos de un solo Pokemon
+  //Funcion para pedir los datos de un solo Pokemon
   const fetchPokemonId = async() => {
     try{    
       setLoading(true)
@@ -46,7 +53,15 @@ export const PokemonProvider = ({children}) => {
     }catch(err){}
   }
 
-  //#PAGINATION
+  //---FILTRO DEL BUSCADOR---
+
+  const onChange = (e) => {
+    e.preventDefault()
+    setSearch(e.target.value)  
+  }
+
+  //---PAGINATION---
+
   useEffect(() => {   
     fetchPokemons()
   }, [page])
@@ -66,9 +81,10 @@ export const PokemonProvider = ({children}) => {
       fetchPokemonId,
       lastPage,
       nextPage,
+      onChange,
       pokemons, 
       allPokemons, 
-      //pokemon, 
+      pokemon, 
       page, 
       total, 
       loading 
