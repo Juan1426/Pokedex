@@ -4,8 +4,13 @@ import { PokemonContext } from '../../contexts/PokemonContext';
 
 const Navbar = () =>{
 
-  const {onChange, search} = useContext(PokemonContext)
-
+  const {setSearch, search} = useContext(PokemonContext)
+  eventTarget.addEventListener("keyup", (e) => {
+    if (e.isComposing || e.keyCode === 229) {
+      return;
+    }
+    // do something
+  });
     return(
       <>
         <header className="header_container">
@@ -33,7 +38,7 @@ const Navbar = () =>{
                 className="searcher"
                 value={search}
                 placeholder="Buscar pokemon..."
-                onChange={onChange}
+                onChange={(e) =>setSearch(e.target.value) }
               />
             </div>           
           </form>            

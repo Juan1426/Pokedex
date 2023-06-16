@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { PokemonProvider } from './contexts/PokemonProvider';
 import './App.css';
 import Pokedex from './pages/Pokedex/Pokedex';
-import PokedexList from './pages/PokedexList/PokedexList';
 import PokemonDetail from './pages/PokemonDetail/PokemonDetail';
 
 import Navbar from './components/Navbar/Navbar'
@@ -19,7 +18,6 @@ export default function App() {
         <Routes>       
           <Route element={<Pokedex />} path="/" />
           <Route element={<Pokedex />} path="/category/:catId" />
-          <Route element={<PokedexList />} path="/list" />
           <Route element={<PokemonDetail/>} path="/details" />
         </Routes>
       </BrowserRouter>

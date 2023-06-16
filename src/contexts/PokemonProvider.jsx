@@ -1,93 +1,51 @@
 import { PokemonContext } from "./PokemonContext"
 import { getPokemons, getAllPokemons, getPokemonData, getPokemonByName } from "../api"
-import { React , useState, useEffect } from "react"
+import { React, useState, useEffect } from "react"
 
-export const PokemonProvider = ({children}) => {
+export const PokemonProvider = ({ children }) => {
   //api
   const [allPokemons, setAllPokemons] = useState([])
-  const [pokemons, setPokemons] = useState([])
   const [pokemon, setPokemon] = useState([])
-  //paginador
-  const [page, setPage] = useState(0)
-  const [total, setTotal] = useState(0)
   //loading
   const [loading, setLoading] = useState(false)
   //buscador
-  const [search, setSearch] = useState([])
+  const [search, setSearch] = useState("")
 
-  //---LLAMADOS A LA API---
+  //---FILTRO DEL BUSCADOR---
 
   //Funcion para llamar 20 pokemons 
-  const fetchPokemons = async () => {
-    try{
-      setLoading(true)
-      const data = await getPokemons(20, 20*page)    
-      const promises = data.results.map( async(pokemon) => {
-        return await getPokemonData(pokemon.url)
-      })
-      const results = await Promise.all(promises)
-      setPokemons(results)
-      setLoading(false)
-      setTotal(Math.ceil(data.count/20))
-    }catch(err){}
-  }   
   
   //Funcion para llamar todos los pokemons
-  const fetchAllPokemons = async() => {
-    try{
+  const fetchAllPokemons = async () => {
+    try {
       setLoading(true)
-      const data = await getAllPokemons()    
-      const promises = data.results.map( async(pokemon) => {
+      const data = await getAllPokemons()
+      const promises = data.results.map(async (pokemon) => {
         return await getPokemonData(pokemon.url)
       })
       const results = await Promise.all(promises)
       setAllPokemons(results)
       setLoading(false)
-    }catch(err){}
+    } catch (err) { }
   }
+
   //Funcion para pedir los datos de un solo Pokemon
-  const fetchPokemonId = async() => {
-    try{    
+  const fetchPokemonName = async () => {
+    try {
       setLoading(true)
       const data = await getPokemonByName()
-    }catch(err){}
+    } catch (err) { }
   }
 
-  //---FILTRO DEL BUSCADOR---
-
-  const onChange = (e) => {
-    e.preventDefault()
-    setSearch(e.target.value)  
-  }
-
-  //---PAGINATION---
-
-  useEffect(() => {   
-    fetchPokemons()
-  }, [page])
-  const lastPage =()=> {
-    const nextPage = Math.max(page - 1, 0)
-    setPage(nextPage)
-  }
-  const nextPage =()=> {
-    const nextPage = Math.min(page + 1, total)
-    setPage(nextPage)
-  }
-
-  return(
+  return (
     <PokemonContext.Provider value={{
       fetchAllPokemons,
-      fetchPokemons,
-      fetchPokemonId,
-      lastPage,
-      nextPage,
-      onChange,
-      pokemons, 
+      fetchPokemonName,
+      setSearch,    
       allPokemons, 
-      pokemon, 
-      page, 
-      total, 
-      loading 
+      loading,
+      search,
+      setLoading
     }}>
       {children}
     </PokemonContext.Provider>
