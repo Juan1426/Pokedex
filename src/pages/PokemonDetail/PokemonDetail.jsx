@@ -1,12 +1,13 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 
 const PokemonDetail = (props) => {
+
+    const pokemon = props.pokemon
     
     console.log(props)
     return (
         <section>
-            details
+            <h2></h2>
         </section>
     )
 }

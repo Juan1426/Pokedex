@@ -5,18 +5,20 @@ import { PokemonContext } from '../../contexts/PokemonContext';
 const Navbar = () =>{
 
   const {setSearch, search} = useContext(PokemonContext)
-  eventTarget.addEventListener("keyup", (e) => {
-    if (e.isComposing || e.keyCode === 229) {
-      return;
-    }
-    // do something
-  });
+  //eventTarget.addEventListener("keyup", (e) => {
+    //if (e.isComposing || e.keyCode === 229) {
+     // return;
+    //}
+
+ // });
     return(
       <>
         <header className="header_container">
-          <div className="logo">
-            <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="logo Pokemon" />
-          </div>
+          <NavLink to={"/"}>
+            <div className="logo">
+              <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="logo Pokemon" />
+            </div>
+          </NavLink>
           <form className="searchbar">
             <div className="form-group">
               <svg

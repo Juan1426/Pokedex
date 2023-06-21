@@ -11,10 +11,7 @@ export const PokemonProvider = ({ children }) => {
   //buscador
   const [search, setSearch] = useState("")
 
-  //---FILTRO DEL BUSCADOR---
 
-  //Funcion para llamar 20 pokemons 
-  
   //Funcion para llamar todos los pokemons
   const fetchAllPokemons = async () => {
     try {
