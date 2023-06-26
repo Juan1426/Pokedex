@@ -58,17 +58,18 @@ const Pokedex = () =>{
           />
         </div>
         <div>
-          <p>{search}</p>
-          {loading?<Loading /> 
-          :<div className="pokedex-grid">            
-            {
-              pokemons.map((pokemon, idx) =>{
-                return (
-                  <PokemonCard pokemon={pokemon} key={pokemon.name} />                        
-                )
-              })
-            }             
-          </div> 
+          {loading
+            ?<Loading /> 
+            :<div className="pokedex-grid">            
+              {
+                pokemons.map((pokemon, idx) =>{
+                  return (
+                    <PokemonCard pokemon={pokemon} key={pokemon.name} />     
+                                      
+                  )
+                })
+              }             
+            </div> 
           }
         </div>
     </main>

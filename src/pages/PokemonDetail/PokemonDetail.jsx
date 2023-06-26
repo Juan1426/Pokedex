@@ -1,15 +1,33 @@
-import React from "react";
+import React, {useContext, useEffect} from "react";
+import Loading from "../../components/Loading/Loading";
+import { PokemonContext } from '../../contexts/PokemonContext';
+import { useParams } from "react-router-dom";
 
-const PokemonDetail = (props) => {
 
-    const pokemon = props.pokemon
-    
-    console.log(props)
+export const PokemonDetail = () => {
+
+    const{fetchPokemonByName, pokemon, setPokemon, loading, setLoading} = useContext(PokemonContext)
+
+    const { name } = useParams
+    const fetchPokemon = async name => {
+        const data = await fetchPokemonByName(name);
+        setPokemon(data);
+        setLoading(false)
+    }
+
+    useEffect(()=> {
+        fetchPokemon(name)
+    }, []);
+
     return (
-        <section>
-            <h2></h2>
-        </section>
+        <main>
+            {loading
+                ? <Loading/>
+                : <section>
+                    <div>{pokemon.name}</div>    
+                </section>
+            }
+        </main>
     )
 }
 
-export default PokemonDetail

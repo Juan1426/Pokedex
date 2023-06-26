@@ -1,13 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
- const PokemonCard = (props) => {
-
-    const pokemon = props.pokemon
+ const PokemonCard = ({ pokemon }) => {
 
     return(      
         <div className="pokemon-card">    
-            <NavLink to={"/details"}>       
+            <NavLink to={`/pokemon/${pokemon.id}`}>       
                 <img 
                     src={pokemon.sprites.other.dream_world.front_default} 
                     alt={`Pokemon ${pokemon.name}`} 

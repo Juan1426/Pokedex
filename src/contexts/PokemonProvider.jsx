@@ -1,14 +1,11 @@
 import { PokemonContext } from "./PokemonContext"
-import { getPokemons, getAllPokemons, getPokemonData, getPokemonByName } from "../api"
-import { React, useState, useEffect } from "react"
+import { getAllPokemons, getPokemonData, getPokemonByName } from "../api"
+import { React, useState} from "react"
 
 export const PokemonProvider = ({ children }) => {
-  //api
   const [allPokemons, setAllPokemons] = useState([])
   const [pokemon, setPokemon] = useState([])
-  //loading
   const [loading, setLoading] = useState(false)
-  //buscador
   const [search, setSearch] = useState("")
 
 
@@ -27,7 +24,7 @@ export const PokemonProvider = ({ children }) => {
   }
 
   //Funcion para pedir los datos de un solo Pokemon
-  const fetchPokemonName = async () => {
+  const fetchPokemonByName = async () => {
     try {
       setLoading(true)
       const data = await getPokemonByName()
@@ -37,12 +34,14 @@ export const PokemonProvider = ({ children }) => {
   return (
     <PokemonContext.Provider value={{
       fetchAllPokemons,
-      fetchPokemonName,
+      fetchPokemonByName,
       setSearch,    
       allPokemons, 
       loading,
       search,
-      setLoading
+      setLoading,
+      pokemon, 
+      setPokemon
     }}>
       {children}
     </PokemonContext.Provider>
