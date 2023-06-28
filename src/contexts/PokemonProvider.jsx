@@ -1,5 +1,5 @@
 import { PokemonContext } from "./PokemonContext"
-import { getAllPokemons, getPokemonData, getPokemonByName } from "../api"
+import { getAllPokemons, getPokemonData, getPokemonById } from "../api"
 import { React, useState} from "react"
 
 export const PokemonProvider = ({ children }) => {
@@ -24,17 +24,11 @@ export const PokemonProvider = ({ children }) => {
   }
 
   //Funcion para pedir los datos de un solo Pokemon
-  const fetchPokemonByName = async () => {
-    try {
-      setLoading(true)
-      const data = await getPokemonByName()
-    } catch (err) { }
-  }
+
 
   return (
     <PokemonContext.Provider value={{
       fetchAllPokemons,
-      fetchPokemonByName,
       setSearch,    
       allPokemons, 
       loading,

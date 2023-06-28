@@ -17,9 +17,9 @@ export const getAllPokemons = async () => {
     }catch(err){}
 }
 //Get Pokemon by Name
-export const getPokemonByName = async(pokemon) => {
+export const getPokemonById = async(id) => {
     try {
-        let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+        let url = `https://pokeapi.co/api/v2/pokemon/${id}`
         const response = await fetch(url)
         const data = await response.json();
         return data

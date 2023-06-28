@@ -1,17 +1,17 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
  const PokemonCard = ({ pokemon }) => {
 
     return(      
         <div className="pokemon-card">    
-            <NavLink to={`/pokemon/${pokemon.id}`}>       
+            <Link to={`/pokemon/${pokemon.name}`}>       
                 <img 
                     src={pokemon.sprites.other.dream_world.front_default} 
                     alt={`Pokemon ${pokemon.name}`} 
                     className="pokemon-img"
                 />        
-            </NavLink>            
+            </Link>            
             <div className="card-body">
                 <div className="card-top">
                     <h2>{pokemon.name}</h2>

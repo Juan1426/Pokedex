@@ -6,9 +6,11 @@ import { PokemonContext } from '../../contexts/PokemonContext';
 import { getPokemonData, getPokemons } from '../../api';
 
 const Pokedex = () =>{  
+  
   const [pokemons, setPokemons] = useState([])
   const [page, setPage] = useState(0)
   const [total, setTotal] = useState(0)
+
   const{ search, loading, setLoading } = useContext(PokemonContext)
 
   const fetchPokemons = async () => {
