@@ -5,6 +5,7 @@ import { PokemonContext } from '../../contexts/PokemonContext';
 const Navbar = () =>{
 
   const {setSearch, search} = useContext(PokemonContext)
+  
   //eventTarget.addEventListener("keyup", (e) => {
     //if (e.isComposing || e.keyCode === 229) {
      // return;

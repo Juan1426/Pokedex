@@ -1,7 +1,5 @@
 import { React, useContext, useState, useEffect } from 'react';
-import PokemonCard from "../../components/PokemonCard/PokemonCard";
-import Loading from '../../components/Loading/Loading';
-import Pagination from '../../components/Pagination/Pagination';
+import { Loading, Pagination, PokemonCard } from '../../components';
 import { PokemonContext } from '../../contexts/PokemonContext';
 import { getPokemonData, getPokemons } from '../../api';
 
@@ -50,7 +48,7 @@ const Pokedex = () =>{
   }
 
   return(
-    <main>
+    <main className='pokedex_main'>
       <div className='coso'>        
           <Pagination 
             page={page + 1}

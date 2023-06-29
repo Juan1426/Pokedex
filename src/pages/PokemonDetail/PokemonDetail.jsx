@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from "react";
 import { useParams } from "react-router-dom";
-import Loading from "../../components/Loading/Loading";
+import { Loading } from '../../components';
 import { PokemonContext } from '../../contexts/PokemonContext';
 import { getPokemonById } from "../../api";
 
@@ -16,14 +16,13 @@ export const PokemonDetail = () => {
         setPokemon(data)
         setLoading(false)
     }
-        useEffect(() =>{
-            fetchPokemonById(id)
-        }, [])
 
-
+    useEffect(() =>{
+        fetchPokemonById(id)
+    }, [])
 
     return (
-        <main>
+        <main className="details_main">
             {loading
                 ?<Loading />
                 :<section>
@@ -32,20 +31,20 @@ export const PokemonDetail = () => {
                     <h3>altura: {pokemon.height}</h3>
                     <h2>tipo</h2>
                     <div>                        
-                        {/*pokemon.types.map((type) =>(
+                        {pokemon.types?.map((type) =>(
                             <span key={type.type.name} className={type.type.name}>
                                 {type.type.name}
                             </span>
-                        ))*/}
+                        ))}
                     </div>
                     <h2>abilidades</h2>
-                    <div>
-                        {/*pokemon.abilities.map((ability)=>(
-                            <span key={ability.ability.name}>
-                                {ability.abiity.name}
-                            </span>
-                        ))*/}
-                  </div>
+                    <ul>
+                        {pokemon.abilities?.map((a)=>(
+                            <li key={a.ability.name}>
+                                {a.ability.name}
+                            </li>
+                        ))}
+                  </ul>
                 </section>
             }
         </main>
