@@ -8,9 +8,7 @@ export const PokemonProvider = ({ children }) => {
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState("")
 
-
-  //Funcion para llamar todos los pokemons
-  const fetchAllPokemons = async () => {
+  /*const fetchAllPokemons = async () => {
     try {
       setLoading(true)
       const data = await getAllPokemons()
@@ -21,14 +19,11 @@ export const PokemonProvider = ({ children }) => {
       setAllPokemons(results)
       setLoading(false)
     } catch (err) { }
-  }
-
-  //Funcion para pedir los datos de un solo Pokemon
-
+  }*/
 
   return (
     <PokemonContext.Provider value={{
-      fetchAllPokemons,
+      //fetchAllPokemons,
       setSearch,    
       allPokemons, 
       loading,

@@ -1,16 +1,15 @@
 import { React, useContext, useState, useEffect } from 'react';
 import { Loading, Pagination, PokemonCard } from '../../components';
 import { PokemonContext } from '../../contexts/PokemonContext';
-import { getPokemonData, getPokemons } from '../../api';
+import { getPokemonData, getPokemons, getAllPokemons} from '../../api';
 
 const Pokedex = () =>{  
   
   const [pokemons, setPokemons] = useState([])
   const [page, setPage] = useState(0)
   const [total, setTotal] = useState(0)
-
   const{ search, loading, setLoading } = useContext(PokemonContext)
-
+  
   const fetchPokemons = async () => {
     setLoading(true)
     let promises 
@@ -19,17 +18,22 @@ const Pokedex = () =>{
       if (!search) {
         data = await getPokemons(20, 20 * page)
         promises = data.results.map(async (pokemon) => {
-          return await getPokemonData(pokemon.url)
-        })
-      } else {
+          return await getPokemonData(pokemon.url) 
+        })               
+        const results = await Promise.all(promises)    
+        setPokemons(results)
+      } else {  
         data = await getPokemons(20, 20 * page)
         promises = data.results.map(async (pokemon) => {
-          return await getPokemonData(pokemon.url)
+          return await getPokemonData(pokemon.url)        
         })
+        const results = await Promise.all(promises)    
+        const filt = results.filter((d)=>
+        d.name.toLowerCase().includes(search.toLocaleLowerCase()))
+        setPokemons(filt)
+
       }
     } catch (err) {console.log(err)}
-    const results = await Promise.all(promises)
-    setPokemons(results)
     setLoading(false)
     setTotal(Math.ceil(data.count / 20))
   }
@@ -61,9 +65,8 @@ const Pokedex = () =>{
           {loading
             ?<Loading /> 
             :<div className="pokedex-grid">            
-              {
-                pokemons.map((pokemon, idx) =>{
-                  return (
+              {pokemons.map((pokemon, idx) =>{
+                return (
                     <PokemonCard pokemon={pokemon} key={pokemon.name} />     
                                       
                   )
