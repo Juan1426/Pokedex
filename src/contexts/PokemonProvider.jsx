@@ -5,6 +5,7 @@ import { React, useState} from "react"
 export const PokemonProvider = ({ children }) => {
   const [allPokemons, setAllPokemons] = useState([])
   const [pokemon, setPokemon] = useState([])
+  const [detail, setDetail] = useState([])
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState("")
 
@@ -30,7 +31,9 @@ export const PokemonProvider = ({ children }) => {
       search,
       setLoading,
       pokemon, 
-      setPokemon
+      setPokemon,
+      detail,
+      setDetail
     }}>
       {children}
     </PokemonContext.Provider>

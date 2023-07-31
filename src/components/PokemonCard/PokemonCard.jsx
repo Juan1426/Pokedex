@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
         <div className="pokemon-card">    
             <Link to={`/pokemon/${pokemon.name}`}>       
                 <img 
-                    src={pokemon.sprites.other.dream_world.front_default} 
+                    src={pokemon.sprites.front_default} 
                     alt={`Pokemon ${pokemon.name}`} 
                     className="pokemon-img"
                 />        

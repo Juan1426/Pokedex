@@ -23,13 +23,13 @@ const Pokedex = () =>{
         const results = await Promise.all(promises)    
         setPokemons(results)
       } else {  
-        data = await getPokemons(20, 20 * page)
+        data = await getAllPokemons()
         promises = data.results.map(async (pokemon) => {
           return await getPokemonData(pokemon.url)        
         })
         const results = await Promise.all(promises)    
-        const filt = results.filter((d)=>
-        d.name.toLowerCase().includes(search.toLocaleLowerCase()))
+        const filt =  results.filter((d)=>
+        d.name.toLowerCase().startsWith(search.toLocaleLowerCase()))
         setPokemons(filt)
 
       }

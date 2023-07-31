@@ -26,7 +26,7 @@ export const PokemonDetail = () => {
             {loading
                 ?<Loading />
                 :<section>
-                    <h2>nombre: {pokemon.name}</h2>
+                    <h2>nombre: {pokemon.name}</h2>      
                     <h3>peso: {pokemon.weight}</h3>
                     <h3>altura: {pokemon.height}</h3>
                     <h2>tipo</h2>

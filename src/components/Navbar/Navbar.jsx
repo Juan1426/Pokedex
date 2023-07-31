@@ -1,11 +1,18 @@
-import {React, useContext} from "react";
+import {React, useContext, useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import { PokemonContext } from '../../contexts/PokemonContext';
 
 const Navbar = () =>{
 
   const {setSearch, search} = useContext(PokemonContext)
-  
+
+  useEffect(() => {
+    document.addEventListener("keypress", detectKeyDown, true)
+  }, [])
+
+  const detectKeyDown = (e) => {
+    console.log("clicked key: ", e.key)
+  }
     return(
       <>
         <header className="header_container">
@@ -36,6 +43,7 @@ const Navbar = () =>{
                 value={search}
                 placeholder="Buscar pokemon..."
                 onChange={(e)=>setSearch(e.target.value)}
+                //onKeyUp={}
               />
             </div>           
           </form>            
