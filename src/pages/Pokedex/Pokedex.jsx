@@ -22,7 +22,8 @@ const Pokedex = () =>{
         })               
         const results = await Promise.all(promises)    
         setPokemons(results)
-      } else {  
+
+      } else if (search) {  
         data = await getAllPokemons()
         promises = data.results.map(async (pokemon) => {
           return await getPokemonData(pokemon.url)        
@@ -31,8 +32,8 @@ const Pokedex = () =>{
         const filt =  results.filter((d)=>
         d.name.toLowerCase().startsWith(search.toLocaleLowerCase()))
         setPokemons(filt)
-
       }
+
     } catch (err) {console.log(err)}
     setLoading(false)
     setTotal(Math.ceil(data.count / 20))

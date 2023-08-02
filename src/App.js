@@ -1,5 +1,5 @@
 import {React} from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { PokemonProvider } from './contexts/PokemonProvider';
 import './App.css';
 import Pokedex from './pages/Pokedex/Pokedex';
@@ -18,7 +18,8 @@ export default function App() {
         <Routes>       
           <Route element={<Pokedex />} path="/" />
           <Route element={<PokemonDetail />} path="/pokemon/:id" />
-          <Route element={<Pokedex/>} path="*" />
+
+          <Route path='*' element={<Navigate to='/' />} />
         </Routes>
       </BrowserRouter>
     </PokemonProvider>

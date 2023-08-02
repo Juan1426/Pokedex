@@ -24,9 +24,23 @@ export const PokemonDetail = () => {
     return (
         <main className="details_main">
             {loading
-                ?<Loading />
-                :<section>
+                ?(<Loading />)
+                :(<section>
                     <h2>nombre: {pokemon.name}</h2>      
+                    <div>
+                        <img 
+                            src={pokemon.sprites?.front_default} 
+                            alt={`Pokemon ${pokemon.name}`} 
+                            className="pokemon-img"
+                        />     
+                        <img 
+                            src={pokemon.sprites?.back_default} 
+                            alt={`Pokemon ${pokemon.name}`} 
+                            className="pokemon-img"
+                        />
+                    </div>
+                    
+
                     <h3>peso: {pokemon.weight}</h3>
                     <h3>altura: {pokemon.height}</h3>
                     <h2>tipo</h2>
@@ -45,7 +59,7 @@ export const PokemonDetail = () => {
                             </li>
                         ))}
                   </ul>
-                </section>
+                </section>)
             }
         </main>
     )

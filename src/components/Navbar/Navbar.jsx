@@ -6,13 +6,6 @@ const Navbar = () =>{
 
   const {setSearch, search} = useContext(PokemonContext)
 
-  useEffect(() => {
-    document.addEventListener("keypress", detectKeyDown, true)
-  }, [])
-
-  const detectKeyDown = (e) => {
-    console.log("clicked key: ", e.key)
-  }
     return(
       <>
         <header className="header_container">
