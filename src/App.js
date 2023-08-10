@@ -1,10 +1,9 @@
-import {React, useState} from 'react';
+import {React} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { PokemonProvider } from './contexts/PokemonProvider';
 import './App.css';
-import { FavouriteProvider } from './contexts/favouriteContext';
 import Pokedex from './pages/Pokedex/Pokedex';
-import PokedexList from './pages/PokedexList/PokedexList';
-import PokemonDetail from './pages/PokemonDetail/PokemonDetail';
+import {PokemonDetail} from './pages/PokemonDetail/PokemonDetail';
 
 import Navbar from './components/Navbar/Navbar'
 
@@ -12,28 +11,17 @@ import "./styles/styles.scss"
 
 export default function App() {
   
-  const [favourites, setFavourites] = useState([]);
-  
-  const updateFavoritePokemons = (name) => {
-    console.log(name);
-  };
-
   return (
-    <FavouriteProvider 
-      value={{
-        favouritePokens: favourites, 
-        updateFavoritePokemons: updateFavoritePokemons
-      }}>
+    <PokemonProvider>
       <BrowserRouter>
         <Navbar />     
         <Routes>       
           <Route element={<Pokedex />} path="/" />
-          <Route element={<Pokedex />} path="/category/:catId" />
-          <Route element={<PokedexList />} path="/list" />
-          <Route element={<PokemonDetail/>} path="/details" />
+          <Route element={<PokemonDetail />} path="/pokemon/:id" />
+          <Route element={<Pokedex/>} path="*" />
         </Routes>
       </BrowserRouter>
-    </FavouriteProvider>
+    </PokemonProvider>
   );
 }
 
