@@ -8,6 +8,7 @@ export const PokemonProvider = ({ children }) => {
   const [detail, setDetail] = useState([])
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState("")
+  const [keyUp, setKeyUp] = useState(false)
 
   /*const fetchAllPokemons = async () => {
     try {
@@ -33,7 +34,9 @@ export const PokemonProvider = ({ children }) => {
       pokemon, 
       setPokemon,
       detail,
-      setDetail
+      setDetail,
+      keyUp,
+      setKeyUp
     }}>
       {children}
     </PokemonContext.Provider>

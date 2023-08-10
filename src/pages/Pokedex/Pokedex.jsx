@@ -8,7 +8,7 @@ const Pokedex = () =>{
   const [pokemons, setPokemons] = useState([])
   const [page, setPage] = useState(0)
   const [total, setTotal] = useState(0)
-  const{ search, loading, setLoading } = useContext(PokemonContext)
+  const{ search, loading, setLoading, keyUp, setKeyUp } = useContext(PokemonContext)
   
   const fetchPokemons = async () => {
     setLoading(true)
@@ -24,6 +24,7 @@ const Pokedex = () =>{
         setPokemons(results)
 
       } else if (search) {  
+        
         data = await getAllPokemons()
         promises = data.results.map(async (pokemon) => {
           return await getPokemonData(pokemon.url)        

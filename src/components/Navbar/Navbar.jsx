@@ -4,7 +4,7 @@ import { PokemonContext } from '../../contexts/PokemonContext';
 
 const Navbar = () =>{
 
-  const {setSearch, search} = useContext(PokemonContext)
+  const {setSearch, search, keyUp, setKeyUp} = useContext(PokemonContext)
 
     return(
       <>
@@ -36,7 +36,7 @@ const Navbar = () =>{
                 value={search}
                 placeholder="Buscar pokemon..."
                 onChange={(e)=>setSearch(e.target.value)}
-                //onKeyUp={}
+                onKeyUp={(e)=> setKeyUp(true)}
               />
             </div>           
           </form>            
